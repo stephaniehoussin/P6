@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,26 @@ class User
      * @ORM\Column(type="integer")
      */
     private $status;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Spot" , mappedBy="user")
+     */
+    private $spots;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Opinion" , mappedBy="user")
+     */
+    private $opinions;
+
+
+    public function __construct()
+    {
+        $this->spots = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->opinions = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -88,4 +110,52 @@ class User
 
         return $this;
     }
+
+    public function getSpot() : Collection
+    {
+        return $this->spots;
+    }
+    public function addSpot(Spot $spot)
+    {
+        $this->spots[]= $spot;
+        $spot->setUser($this);
+    }
+
+    public function removeSpot(Spot $spot)
+    {
+        $this->spots->removeElement($spot);
+    }
+
+    public function getComment() : Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment)
+    {
+        $this->comments[]= $comment;
+        $comment->setUser($this);
+    }
+
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    public function getOpinion() : Collection
+    {
+        return $this->opinions;
+    }
+
+    public function addOpinion(Opinion $opinion)
+    {
+        $this->opinions[]= $opinion;
+        $opinion->setUser($this);
+    }
+
+    public function removeOpinion(Opinion $opinion)
+    {
+        $this->opinions->removeElement($opinion);
+    }
+
 }

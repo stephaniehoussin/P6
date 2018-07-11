@@ -25,6 +25,16 @@ class Opinion
      * @ORM\Column(type="datetime")
      */
     private $date;
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     public function getId()
     {
@@ -53,5 +63,23 @@ class Opinion
         $this->date = $date;
 
         return $this;
+    }
+
+    /**
+     * @param User|null $user
+     * @return $this
+     */
+    public function setUser(User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return user
+     */
+    public function getUser() : User
+    {
+        return $this->user;
     }
 }
