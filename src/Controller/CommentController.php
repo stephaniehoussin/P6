@@ -8,12 +8,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CommentController extends Controller
 {
     /**
-     * @Route("/comment", name="comment")
+     * @Route("/commentaire/signaler", name="signal_comment")
      */
-    public function index()
+    public function reportComment()
     {
-        return $this->render('comment/index.html.twig', [
-            'controller_name' => 'CommentController',
-        ]);
+        return $this->render('comment/reportComment.html.twig');
+    }
+
+    /**
+     * @Route("/commentaire/ajouter", name="add_comment")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addComment()
+    {
+        return $this->render('comment/addComment.html.twig');
     }
 }

@@ -8,12 +8,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class OpinionController extends Controller
 {
     /**
-     * @Route("/opinion", name="opinion")
+     * @Route("/opinion/ajouter", name="add_opinion")
      */
-    public function index()
+    public function addOpinion()
     {
-        return $this->render('opinion/index.html.twig', [
-            'controller_name' => 'OpinionController',
-        ]);
+        return $this->render('opinion/addOpinion.html.twig');
+    }
+
+    /**
+     * @Route("/opinions", name="show_all_opinion")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function allOpinion()
+    {
+        return $this->render('opinion/allOpinion.html.twig');
     }
 }

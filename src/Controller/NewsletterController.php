@@ -12,7 +12,7 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        return $this->render('newsletter/index.html.twig', [
+        return $this->render('newsletter/reportComment.html.twig', [
             'controller_name' => 'NewsletterController',
         ]);
     }
