@@ -22,6 +22,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return $this->render('home/reportComment.html.twig');
+        return $this->render('home/index.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function contact()
+    {
+        return $this->render('home/contact.html.twig');
     }
 }

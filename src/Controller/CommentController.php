@@ -23,4 +23,9 @@ class CommentController extends Controller
     {
         return $this->render('comment/addComment.html.twig');
     }
+
+    public function deleteComment()
+    {
+
+    }
 }
