@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
      public function landing()
      {
-         return $this->render('landing/reportComment.html.twig');
+         return $this->render('landing/index.html.twig');
      }
 
     /**
