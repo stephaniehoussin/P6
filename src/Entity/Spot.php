@@ -73,13 +73,13 @@ class Spot
     private $nbTrees;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="spots")
      */
     private $user;
 
     /**
      * @ORM\JoinColumn(name="comment", referencedColumnName="id")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Comment")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="spot", cascade="persist")
      */
     private $comments;
 

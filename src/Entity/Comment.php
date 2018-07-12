@@ -31,6 +31,18 @@ class Comment
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @var
+     */
+    private $report;
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="App\Entity\Spot", inversedBy="comments")
+     */
+    private $spot;
+
 
     public function __construct()
     {
@@ -54,6 +66,18 @@ class Comment
         return $this;
     }
 
+    public function getSpot(): ?string
+    {
+        return $this->spot;
+    }
+
+    public function setSpot(string $spot): self
+    {
+        $this->spot = $spot;
+
+        return $this;
+    }
+
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -73,6 +97,18 @@ class Comment
     public function setUser(string $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getReport(): ?bool
+    {
+        return $this->report;
+    }
+
+    public function setReport(string $report): self
+    {
+        $this->report = $report;
 
         return $this;
     }
